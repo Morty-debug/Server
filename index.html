@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Subidor de Imagenes PNG</title>
+	</head>
+	<body>
+		<h3>  {{.UrlServer}} <h3>
+		<hr>
+		<form enctype="multipart/form-data" action="upload" method="post">
+			<p> Nombre:	<input type="text" name="Nombre" /> </p>
+			<p> Archivo:	<input type="file" name="Archivo" /> </p>
+			<input type="submit" value="upload" />
+		</form>
+	</body>
+</html>
