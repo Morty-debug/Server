@@ -1,2 +1,11 @@
-# Server
-Servidor Web
+
+### compilar
+```batch
+go build
+```
+
+
+### ejecutar
+```batch
+Server.exe
+```
