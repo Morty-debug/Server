@@ -6,6 +6,7 @@ import (
     "net/http"
     "html/template"
     "path/filepath"
+    "github.com/skratchdot/open-golang/open"
 )
 
 func subidor(w http.ResponseWriter, r *http.Request) {
@@ -87,6 +88,7 @@ func main() {
 	fmt.Println("localhost:8080")
 	http.HandleFunc("/", index)
 	http.HandleFunc("/upload", subidor)
+	open.Run("http://localhost:8080")
 	//http.Handle("/", http.FileServer(http.Dir("./paginasweb")))
 	http.ListenAndServe(":8080", nil)
 }
