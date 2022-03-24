@@ -1,11 +1,11 @@
 
 ### compilar
 ```batch
-go build
+go build main.go
 ```
 
 
 ### ejecutar
 ```batch
-Server.exe
+main.exe
 ```
