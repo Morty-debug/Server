@@ -8,13 +8,13 @@ import (
 )
 
 type Response struct {
-  Estado        string
-  Comparaciones []Matchs
+	Estado        string
+	Comparaciones []Matchs
 }
 
 type Matchs struct {
-  Id             string
-  Puntuacion     int
+	Id            string
+	Puntuacion    int
 }
 
 func main() {
@@ -24,7 +24,7 @@ func main() {
 }
 
 func writejson(w http.ResponseWriter, r *http.Request) {
-    match0 := Matchs{"DGME-1802", 72}
+	match0 := Matchs{"DGME-1802", 72}
 	match1 := Matchs{"DGME-yo", 150}
 	Matches := []Matchs{match0, match1}
 	Estructura := Response {"Identificado",Matches}
@@ -35,11 +35,11 @@ func writejson(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(js)
-    return
+	return
 }
 
 func readjson(w http.ResponseWriter, r *http.Request) {
-    w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Content-Type", "text/plain")
 	url := "http://localhost:8080/"
 	res, err := http.Get(url)
 	if err != nil {
@@ -57,5 +57,5 @@ func readjson(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("Id: %s Puntuacion: %d\n", data.Comparaciones[i].Id, data.Comparaciones[i].Puntuacion)
 		fmt.Fprintf(w, "Id: %s Puntuacion: %d\n", data.Comparaciones[i].Id, data.Comparaciones[i].Puntuacion) 
 	}
-    return
+	return
 }
