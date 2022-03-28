@@ -58,7 +58,7 @@ func writejson(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-/* lee JSON desde una la URL localhost:8080 para mostrarlo en localhost:8080/leer */
+/* lee JSON desde la URL localhost:8080 para mostrarlo en localhost:8080/leer */
 func readjson(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/plain")
 	url := "http://localhost:8080/"
