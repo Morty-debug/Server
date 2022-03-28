@@ -115,29 +115,29 @@ func inputjson(w http.ResponseWriter, r *http.Request) {
 
 /* envia JSON via POST a localhost:8080/recibir y muestra resultados en localhost:8080/enviar */
 func sendjson(w http.ResponseWriter, r *http.Request) {
-	url := "http://localhost:8080/recibir"
-    
-    match0 := Matchs{"Luisa", 100}
+	url := "http://localhost:8080/recibir"    
+	
+	match0 := Matchs{"Luisa", 100}
 	match1 := Matchs{"Wendy", 75}
 	Matches := []Matchs{match0, match1}
 	Estructura := Response {"Compatible",Matches}
 	js, err := json.Marshal(Estructura)
 	
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(js))
-    req.Header.Set("X-Custom-Header", "myvalue")
-    req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("X-Custom-Header", "myvalue")
+	req.Header.Set("Content-Type", "application/json")
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
 
-    fmt.Fprintf(w, "Respuesta Estado: %s\n", resp.Status) 
-    fmt.Fprintf(w, "Respuesta Encabezado: %s\n", resp.Header) 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Fprintf(w, "Respuesta Cuerpo: %s\n", string(body)) 
-    fmt.Fprintf(w, "JSON Enviado\n") 
-    return
+	fmt.Fprintf(w, "Respuesta Estado: %s\n", resp.Status) 
+	fmt.Fprintf(w, "Respuesta Encabezado: %s\n", resp.Header) 
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Fprintf(w, "Respuesta Cuerpo: %s\n", string(body)) 
+	fmt.Fprintf(w, "JSON Enviado\n") 
+	return
 }
