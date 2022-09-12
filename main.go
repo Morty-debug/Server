@@ -59,7 +59,9 @@ func subidor(w http.ResponseWriter, r *http.Request) {
 	// obtenemos el archivo desde archivos temporales
 	fileBytes, err := ioutil.ReadAll(file)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Fprintf(w, "No se logro leer el archivo\n")
+		fmt.Println("No se logro leer el archivo")
+		return
 	}
 
 	// escribimos el archivo en el servidor
