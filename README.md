@@ -1,11 +1,12 @@
 
-### compilar
-```batch
-go build main.go
+### usando docker
+```bash
+docker compose up
 ```
 
 
-### ejecutar
-```batch
-main.exe
+### usando solo golang
+```bash
+mkdir subidos
+go run main.go
 ```

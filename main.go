@@ -6,7 +6,6 @@ import (
     "net/http"
     "html/template"
     "path/filepath"
-    "github.com/skratchdot/open-golang/open"
 )
 
 func subidor(w http.ResponseWriter, r *http.Request) {
@@ -25,8 +24,8 @@ func subidor(w http.ResponseWriter, r *http.Request) {
 	r.Body = http.MaxBytesReader(w, r.Body, 1024*1024)
 	err := r.ParseMultipartForm(1024*1024)
 	if err != nil {
-		fmt.Fprintf(w, "El archivo es demasiado grande, excede 1MB o no contiene Multiples parte\n")
-		fmt.Println("El archivo es demasiado grande, excede 1MB o no contiene Multiples parte")
+		fmt.Fprintf(w, "El archivo es demasiado grande, excede 1MB o no contiene Multiples parte o se corrompio\n")
+		fmt.Println("El archivo es demasiado grande, excede 1MB o no contiene Multiples parte o se corrompio")
 		return
 	}
 	
@@ -50,8 +49,8 @@ func subidor(w http.ResponseWriter, r *http.Request) {
 	// generamos un nombre de archivo ramdom
 	tempFile, err := ioutil.TempFile("subidos", "*"+filepath.Ext(handler.Filename))
 	if err != nil {
-		fmt.Fprintf(w, "No se logro ramdomizar el nombre\n")
-		fmt.Println("No se logro ramdomizar el nombre")
+		fmt.Fprintf(w, "La carpeta subidos no Existe o No se logro ramdomizar el nombre\n")
+		fmt.Println("La carpeta subidos no Existe o No se logro ramdomizar el nombre")
 		return
 	}
 	defer tempFile.Close()
@@ -90,7 +89,6 @@ func main() {
 	fmt.Println("localhost:8080")
 	http.HandleFunc("/", index)
 	http.HandleFunc("/upload", subidor)
-	open.Run("http://localhost:8080")
-	//http.Handle("/", http.FileServer(http.Dir("./paginasweb")))
+	http.Handle("/subidos/", http.StripPrefix("/subidos", (http.FileServer(http.Dir("./subidos"))) ))
 	http.ListenAndServe(":8080", nil)
 }

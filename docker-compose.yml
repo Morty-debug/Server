@@ -1,0 +1,18 @@
+version: '1'
+
+# Defino Servicios
+services:
+  # App Servicio
+  demo:
+    # Configuracion para correr la imagen docker para el servicio
+    build:
+      context: . # Usa una imagen construida a partir del dockerfile especificado en el directorio actual.
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Reenvia el trafico del puerto 8080 anfitrion al contenedor en el puerto 8080
+    restart: unless-stopped
+    # Montamos un volumen entre el anfitrio y el contenedor
+    volumes:
+      - ./subidos:/docker/subidos #Ruta en anfitrio y Ruta en el contenedor
+
+
