@@ -1,11 +1,11 @@
 package main
 
 import (
-    "fmt"
-    "io/ioutil"
-    "net/http"
-    "html/template"
-    "path/filepath"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"html/template"
+	"path/filepath"
 )
 
 func subidor(w http.ResponseWriter, r *http.Request) {
